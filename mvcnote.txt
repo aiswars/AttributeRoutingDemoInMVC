@@ -32,9 +32,9 @@ In RouteCOnfig.cs give COntroller name as Student - but if its Home then also it
 
 Here in RouteCOnfig- Controller name is Home, but no HomeController then how it worked - Run any cshtml view
 
-https://localhost:44346/Student/GetStudentByID?studentID=1
-https://localhost:44346/Student/GetStudentCourses?studentID=4
-https://localhost:44346/Student/GetAllStudents
+https://localhost:xxx/Student/GetStudentByID?studentID=1
+https://localhost:xxx/Student/GetStudentCourses?studentID=4
+https://localhost:xxx/Student/GetAllStudents
 
 
 
@@ -63,7 +63,7 @@ namespace AttributeRoutingDemoInMVC
     }
 }
 
-https://localhost:44346/Student/2/courses  -- didnt work
+https://localhost:xxx/Student/2/courses  -- didnt work
 
 -----------------------------------------------------------------------------
 
