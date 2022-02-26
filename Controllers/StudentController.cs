@@ -29,6 +29,7 @@ namespace AttributeRoutingDemoInMVC.Controllers
             return View(studentDetails);
         }
         [HttpGet]
+        [Route("student/{studentID}/courses")]   //AttributeRouting
         public ActionResult GetStudentCourses(int studentID)
         {
             List<string> CourseList = new List<string>();

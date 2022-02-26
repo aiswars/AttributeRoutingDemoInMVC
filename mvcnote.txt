@@ -1,0 +1,88 @@
+Routing 
+Then ASP.NET Framework introduced the concept of Routing to eliminate the need of mapping each and every URL to a physical file. The Routing Concept enables us to define the URL pattern that maps to the request handler. 
+That request handler can be a class (class methods) or file.
+
+in the case of ASP.NET MVC Framework, the request handler is the Controller Methods i.e. action methods.
+
+The Route defines the URL pattern and the handler information. The handler can be a physical file, such as an ASPX file in the case of the WebForms application. A handler can also be a class that processes the request, 
+such as a controller in the case of the ASP.NET MVC application. 
+
+Routing in ASP.NET MVC is a pattern matching mechanism that handles the incoming HTTP request (i.e. incoming URL) and figures out what to do with that incoming HTTP request.
+
+When the client makes a request i.e. makes an HTTP Request, then that request is first received by the Routing Engine. Once the Routing engine receives an HTTP Request, 
+then it figures out the URL Pattern of the incoming request and checks if that URL pattern is present in the Route table. If it found a matching URL pattern for the incoming 
+request in the Route Table, then it fetches the corresponding handler information and forwards the request to the appropriate controller and action method.
+ If there is no match found in the routing table for the incoming HTTP request URL Pattern, then it simply returns a 404 HTTP status code.
+ The routing functionality is implemented in the System.Web.Routing.
+
+
+Route Constraint
+-------------------
+to provide some restrictions to the url - a way to put some validation around the defined route.
+Restrict to numeric Id only and for Restricting Controller and Actions.
+id should be only numeric values or COntroller name in the url should start with caps or only given action methods shoud work.
+
+
+ Attribute Routing in ASP.NET MVC
+---------------------------------
+Student.cs in Models folder
+StudentController.cs in COntrollers folder with 3 action methods
+3 cshtml files in Vies folder for the 3 controller action methods
+In RouteCOnfig.cs give COntroller name as Student - but if its Home then also it worked why??
+
+Here in RouteCOnfig- Controller name is Home, but no HomeController then how it worked - Run any cshtml view
+
+https://localhost:44346/Student/GetStudentByID?studentID=1
+https://localhost:44346/Student/GetStudentCourses?studentID=4
+https://localhost:44346/Student/GetAllStudents
+
+
+
+Implementing Attribute Routing in ASP.NET MVC
+
+Just Add routes.MapMvcAttributeRoutes() method within the RegisterRoutes() method of RouteConfig.cs file.
+
+
+namespace AttributeRoutingDemoInMVC
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            //Enabling attribute routing 
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
+
+https://localhost:44346/Student/2/courses  -- didnt work
+
+-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

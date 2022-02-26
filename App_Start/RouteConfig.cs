@@ -7,11 +7,14 @@ using System.Web.Routing;
 
 namespace AttributeRoutingDemoInMVC
 {
+
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //Enabling attribute routing 
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
@@ -19,3 +22,4 @@ namespace AttributeRoutingDemoInMVC
             );
         }
     }
+}
